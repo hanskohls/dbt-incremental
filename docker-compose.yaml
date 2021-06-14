@@ -15,3 +15,14 @@ services:
       - "8080:8080"
       - "9229:9229"
     command: npm start
+
+  db-incremental:
+    image: postgres:11.5
+    container_name: pg_dbt_incremental
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
